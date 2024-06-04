@@ -2,4 +2,4 @@
 1
 2
 3
-p dea Data envelopment analysis
+p kernreg Kernel regression (Nadaraya-Watson estimator) Use kernreg And kernreg1 And kernreg2 With STATA 18
