@@ -1,5 +1,14 @@
-d 'DEA': Data envelopment analysis
+d 'kernreg': Kernel regression (Nadaraya-Watson estimator) Use kernreg And kernreg1 And kernreg2 With STATA 18
 d
-f dea.ado
-f dea.sthlp
-f coelli_table6.4.dta
+f gwarpreg.ado
+f gwarpreg.hlp
+f kernreg.ado
+f kernreg.hlp
+f kernreg.xlsx
+f kernreg1.ado
+f kernreg1.hlp
+f kernreg2.ado
+f knnreg.ado
+f knnreg.hlp
+f warpreg.ado
+f warpreg.hlp
