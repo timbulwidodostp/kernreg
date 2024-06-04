@@ -1,0 +1,120 @@
+.-
+help for ^gwarpreg^                                               [STB-30: snp9]
+.-
+
+Adjusted prediction error for WARP regression (Nadaraya-Watson estimator)
+-------------------------------------------------------------------------
+
+        ^gwarpreg^ yvar xvar [^if^ exp] [^in^ range],
+                ^d^elta^(^#^)^ ^k^ercode^(^#^)^ ^s^elect^(^#^)^ [ ^bou^nd^(^#^)^
+                ^g^en^(^score mvalue bwidth^)^ ^me^nd^(^#^)^ ^ms^tart^(^#^)^ ]
+
+
+Description
+-----------
+
+^gwarpreg^ program calculates the adjusted prediction error of the WARP
+approximation of the Nadaraya-Watson estimator for several penalty functions
+in order to find an optimal bandwidth for kernel regression.  By default,
+^gwarpreg^ draws two graphs, the score versus M and the score versus
+bandwidth, and displays a table with the five smallest scores and their 
+corresponding M's and bandwidths.
+
+
+Options
+-------
+
+^d^elta^(^#^)^ specifies the desired accuracy for estimation (equivalent to the
+    small bin width in WARP density estimation).
+
+^k^ercode^(^#^)^ specifies the weight function (kernel) used to calculate the
+    required univariate densities.  The following codes are used:
+
+	1 = Uniform
+ 	2 = Triangle 
+ 	3 = Epanechnikov
+ 	4 = Quartic (Biweight)
+ 	5 = Triweight
+ 	6 = Gaussian
+
+^s^elect^(^#^)^ specifies the penalty function as follows:
+
+	1 = Shibata's model selector
+	2 = Generalized cross-validation
+	3 = Akaike's information criterion
+	4 = Finite prediction error
+	5 = Rice's T
+
+^bou^nd^(^#^)^ specifies the fraction of the data to be excluded from the
+   estimation. By default it is set to 0.1.
+
+^g^en^(^score mvalue bandwidth^)^ generates new variables to store the adjusted
+    prediction error (score) and corresponding M and bandwidth values.
+
+^ms^tart^(^#^)^ specifies the initial value for the range of M
+    used for the minimum score search.  The default is 5.
+
+^me^nd^(^#^)^ specifies the final value for the range of M used for
+    the minimum score search.  The default is int(0.3*(max(x)-min(x)/delta).
+
+
+Remarks
+-------
+
+^d^elta, ^s^elect, and ^k^ercode, are not optional. If the user does not provide
+them, the program halts and displays an error message on screen.
+
+This program uses modified versions of the ado and Turbo Pascal executable
+files for kernel density estimation presented in Salgado-Ugarte, et al.
+(1993).  The program is based on the algorithms and programs of Haerdle (1991)
+and Scott (1992).
+
+
+Examples
+--------
+
+  . ^gwarpreg wait dura, delta(0.05) selec(2) kercode(4) mend(40)^
+
+  . ^gwarpreg accel time, d(0.2) s(1) k(4) me(20) gen(score mvalue bandw)^
+
+
+References
+----------
+
+Haerdle, W. 1991. Smoothing techniques with implementation in S.
+    Springer-Verlag.
+
+Salgado-Ugarte, I. H., M. Shimizu, and T. Taniuchi 1993. snp6: Exploring
+    the shape of univariate data using kernel density estimators. Stata 
+    Technical Bulletin 16: 8-19.
+
+Salgado-Ugarte, I. H., M. Shimizu, and T. Taniuchi 1995. snp6.1: ASH,
+    WARPing, and kernel density estimation for univariate data. Stata
+    Technical Bulletin 26: 23-31.
+
+Salgado-Ugarte, I. H., M. Shimizu, and T. Taniuchi 1995. snp6.2: Practical
+    rules for bandwidth selection in univariate density estimation. Stata
+    Technical Bulletin 27: 5-19.
+
+Scott, D. W. 1992. Multivariate density estimation: Theory, practice,
+    and visualization. John Wiley & Sons.
+
+Silverman, B. W. 1986. Density estimation for statistics and data analysis. 
+    Chapman and Hall.
+
+
+Authors
+-------
+
+        Isaias H. Salgado-Ugarte, Makoto Shimizu and Toru Taniuchi
+        University of Tokyo, Faculty of Agriculture,
+        Department of Fisheries, Yayoi 1-1-1, Bunkyo-ku
+        Tokyo 113, Japan.
+        fes01@@tzetzal.dcaa.unam.mx
+
+
+Also see
+--------
+
+    STB: STB-30 snp9, STB-27 snp6.2, STB-26 snp6.1, STB-16 snp6
+On-line: ^help^ for @kerneld@, @warpden@, @warpdens@, @warpreg@, @kernreg@
