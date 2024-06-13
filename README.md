@@ -1,6 +1,8 @@
 # kernreg
 Kernel regression (Nadaraya-Watson estimator) Use kernreg And kernreg1 And kernreg2 With STATA 18
 
+https://www.youtube.com/watch?v=l3hXA-FZQWc
+
 Olah Data Semarang
 
 WA : +6285227746673 (085227746673)
